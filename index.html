@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美缝材料用量计算器【面积】</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .calculators {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .calculator {
+            flex: 1;
+            min-width: 160px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .calculator label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .total-price {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .total-meters {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* 计算总材料用量按钮样式 */
+        .total-price button {
+  padding: 18px 35px; /* 增大按钮的内边距 */
+            font-size: 20px; /* 增大按钮字体 */
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: auto; /* 让按钮宽度适应内容 */
+            margin-top: 10px;
+        }
+
+        /* 鼠标悬停按钮时的效果 */
+        button:hover {
+            background-color: #ff4c4c;
+        }
+
+        /* 总材料用量结果的样式 */
+        #totalPriceResult {
+            font-size: 24px;
+            font-weight: bold;
+            color: red; /* 修改字体颜色为红色 */
+            text-align: left; /* 左对齐 */
+            margin-top: 15px;
+            clear: both; /* 清除浮动，确保显示在按钮下方 */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>美缝材料用量计算器【面积】</h2>
+
+    <div class="calculators">
+        <!-- 瓷砖规格 1 -->
+        <div class="calculator" id="calculator1">
+            <h3>瓷砖规格 1</h3>
+            <label for="area1">请输入面积 (㎡):</label>
+            <input type="number" id="area1" placeholder="面积 (㎡)" step="0.01">
+            <label for="length1">请输入长度 (m):</label>
+            <input type="number" id="length1" placeholder="长度 (m)" step="0.01">
+            <label for="width1">请输入宽度 (m):</label>
+            <input type="number" id="width1" placeholder="宽度 (m)" step="0.01">
+            <div class="result" id="result1"></div>
+        </div>
+
+        <!-- 瓷砖规格 2 -->
+        <div class="calculator" id="calculator2">
+            <h3>瓷砖规格 2</h3>
+            <label for="area2">请输入面积 (㎡):</label>
+            <input type="number" id="area2" placeholder="面积 (㎡)" step="0.01">
+            <label for="length2">请输入长度 (m):</label>
+            <input type="number" id="length2" placeholder="长度 (m)" step="0.01">
+            <label for="width2">请输入宽度 (m):</label>
+            <input type="number" id="width2" placeholder="宽度 (m)" step="0.01">
+            <div class="result" id="result2"></div>
+        </div>
+
+        <!-- 瓷砖规格 3 -->
+        <div class="calculator" id="calculator3">
+            <h3>瓷砖规格 3</h3>
+            <label for="area3">请输入面积 (㎡):</label>
+            <input type="number" id="area3" placeholder="面积 (㎡)" step="0.01">
+            <label for="length3">请输入长度 (m):</label>
+            <input type="number" id="length3" placeholder="长度 (m)" step="0.01">
+            <label for="width3">请输入宽度 (m):</label>
+            <input type="number" id="width3" placeholder="宽度 (m)" step="0.01">
+            <div class="result" id="result3"></div>
+        </div>
+
+        <!-- 瓷砖规格 4 -->
+        <div class="calculator" id="calculator4">
+            <h3>瓷砖规格 4</h3>
+            <label for="area4">请输入面积 (㎡):</label>
+            <input type="number" id="area4" placeholder="面积 (㎡)" step="0.01">
+            <label for="length4">请输入长度 (m):</label>
+            <input type="number" id="length4" placeholder="长度 (m)" step="0.01">
+            <label for="width4">请输入宽度 (m):</label>
+            <input type="number" id="width4" placeholder="宽度 (m)" step="0.01">
+            <div class="result" id="result4"></div>
+        </div>
+
+        <!-- 瓷砖规格 5 -->
+        <div class="calculator" id="calculator5">
+            <h3>瓷砖规格 5</h3>
+            <label for="area5">请输入面积 (㎡):</label>
+            <input type="number" id="area5" placeholder="面积 (㎡)" step="0.01">
+            <label for="length5">请输入长度 (m):</label>
+            <input type="number" id="length5" placeholder="长度 (m)" step="0.01">
+            <label for="width5">请输入宽度 (m):</label>
+            <input type="number" id="width5" placeholder="宽度 (m)" step="0.01">
+            <div class="result" id="result5"></div>
+        </div>
+
+        <!-- 瓷砖规格 6 -->
+        <div class="calculator" id="calculator6">
+            <h3>瓷砖规格 6</h3>
+            <label for="area6">请输入面积 (㎡):</label>
+            <input type="number" id="area6" placeholder="面积 (㎡)" step="0.01">
+            <label for="length6">请输入长度 (m):</label>
+            <input type="number" id="length6" placeholder="长度 (m)" step="0.01">
+            <label for="width6">请输入宽度 (m):</label>
+            <input type="number" id="width6" placeholder="宽度 (m)" step="0.01">
+            <div class="result" id="result6"></div>
+        </div>
+    </div>
+
+    <div class="total-meters">
+        <p>总米数: <span id="totalMeters">0</span> 米</p>
+    </div>
+
+    <div class="total-price">
+        <label for="price">请输入数据 (双管材料输入:20，3kg桶装材料输入:100 ):</label>
+        <input type="number" id="price" placeholder="数据" step="0.01">
+        <button onclick="calculateTotalPrice()">计算总材料用量</button>
+        <div id="totalPriceResult"></div> <!-- 计算结果移到按钮下方 -->
+    </div>
+
+    <div class="footer">
+        <p>制作人: Kevin鲁大师【未经授权 盗用必究】</p>
+    </div>
+</div>
+
+<script>
+    // 用于存储6个计算器的计算结果
+    var results = [0, 0, 0, 0, 0, 0];
+
+    // 单个计算器的计算函数
+    function calculate(calculatorIndex) {
+        var area = parseFloat(document.getElementById("area" + calculatorIndex).value);
+        var length = parseFloat(document.getElementById("length" + calculatorIndex).value);
+        var width = parseFloat(document.getElementById("width" + calculatorIndex).value);
+
+        if (isNaN(area) || isNaN(length) || isNaN(width) || length <= 0 || width <= 0 || area <= 0) {
+            document.getElementById("result" + calculatorIndex).textContent = "自动计算中ing···";
+            return;
+        }
+
+        // 根据公式计算米数
+        var result = (area / length / width) * (length + width);
+        results[calculatorIndex - 1] = result; // 保存结果
+
+        // 显示当前计算器的结果
+        document.getElementById("result" + calculatorIndex).textContent = "计算结果: " + result.toFixed(2) + " 米";
+
+        // 更新总米数
+        updateTotalMeters();
+    }
+
+    // 更新总米数
+    function updateTotalMeters() {
+        var totalMeters = results.reduce((sum, current) => sum + current, 0);
+        document.getElementById("totalMeters").textContent = totalMeters.toFixed(2);
+    }
+
+    // 计算总材料用量
+    function calculateTotalPrice() {
+        var price = parseFloat(document.getElementById("price").value);
+
+        if (isNaN(price) || price <= 0) {
+            document.getElementById("totalPriceResult").textContent = "请输入有效的数据!";
+            return;
+        }
+
+        // 计算总材料用量
+        var total = results.reduce((sum, current) => sum + current, 0) / price;
+
+        // 显示总材料用量
+        document.getElementById("totalPriceResult").textContent = "总材料用量: " + total.toFixed(2) + " 支/桶";
+    }
+
+    // 监听输入框变化
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('input', function() {
+            var calculatorIndex = parseInt(input.id.replace(/[^\d]/g, ''));
+            calculate(calculatorIndex);
+        });
+    });
+</script>
+
+</body>
+</html>
